@@ -12,7 +12,10 @@
       })
     },
     mounted() {
-      this.axios.get('/test')
+      console.log(this.$route)
+      this.axios.get('/login').then(res=>{
+        console.log(JSON.parse(res.data.msg))
+      })
       this.$store.dispatch("qwe").then(()=>{
         console.log("qwe")
         console.log(this.qwe)
