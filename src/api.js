@@ -1,7 +1,7 @@
 import axios from "axios";
 
 let request = axios.create({
-    baseURL:'http://localhost:3000'
+    baseURL:'/'
 })
 let request2 = axios.create({
     baseURL:'http://localhost:8080'
