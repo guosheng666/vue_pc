@@ -14,6 +14,13 @@
       "name": "Test",
       "title": "测试",
       "component": "views/Test.vue"
+    },
+    {
+      "path": "/",
+      "name": "Home",
+      "redirect": "/login",
+      "title": "测试",
+      "component": "views/Home.vue"
     }
   ]
 }

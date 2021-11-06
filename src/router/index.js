@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/login',
     name: 'Login',
     component: Login
   },
@@ -19,15 +19,12 @@ const router = new VueRouter({
 
 let type = null
 router.beforeEach(async (to,from,next)=>{
-  if (to.name=='Login'){
-    console.log(111111)
-    console.log(to)
-    next()
-  }else {
-    console.log(222)
-    //阻止无线循环
-    if(!type ){
-      type = "123"
+  //阻止无线循环
+  if(!type ){
+    type = "123"
+    if(type){
+      next("/login")
+    }else {
       let routerJson =await api.request.get("/login")
       const routers = JSON.parse(routerJson.data.msg).routers
       routers.map(item=>{
@@ -43,10 +40,10 @@ router.beforeEach(async (to,from,next)=>{
       })
       console.log(router.options)
       next({...to, replace: true})
-
-    }else {
-      next()
     }
+
+  }else {
+    next()
   }
 })
 

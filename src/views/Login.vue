@@ -81,7 +81,7 @@
         },
         methods:{
             submitForm(){
-                this.$router.push("/about")
+                this.$router.push("/home")
             },
             resetForm(formName){
                 this.$refs[formName].resetFields();
@@ -92,7 +92,9 @@
 </script>
 
 <style scoped>
+
     .box{
+        background-image: url("../assets/login/bg.png");
         height: 100%;
         width: 100%;
         display: flex;
@@ -101,7 +103,13 @@
         box-shadow: #2c3e50;
     }
     .from{
+        box-shadow: 0px 16px 70px 0px rgba(50, 43, 74, 0.06);
+        background:#ffffff;
+        border-radius: 5px;
         height: 400px;
         width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>

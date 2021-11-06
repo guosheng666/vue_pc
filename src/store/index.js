@@ -12,20 +12,28 @@ getRouter().then(res=>{
 })
 export default new Vuex.Store({
   state: {
-    qwe:""
+    qwe:"",
+    login:''
   },
   getters:{
-    qwe:(state)=>state.qwe
+    qwe:(state)=>state.qwe,
+    login:(state)=>state.login
   },
   mutations: {
     qwe(state,data){
       state.qwe = data
+    },
+    login(state,data){
+      state.login = data
     }
   },
   actions: {
     async qwe({commit}){
       let data = await getRouter()
       commit('qwe',data.data)
+    },
+    login({commit},data){
+      commit('login',data)
     }
   },
   modules: {

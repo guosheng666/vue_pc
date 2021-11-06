@@ -1,33 +1,88 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/test">test</router-link>
-    </div>
-    <router-view/>
+      <el-container v-if="isShow" style="height: 100%;width: 100%;">
+          <el-header>Header</el-header>
+          <el-container>
+              <el-aside width="200px">Aside</el-aside>
+              <el-main>
+                  <router-view/>
+              </el-main>
+          </el-container>
+      </el-container>
+    <router-view v-else/>
   </div>
 </template>
+<script>
+    export default {
+        data(){
+            return{
+                isShow:true
+            }
+        },
+        watch:{
+            $route:{
+                handler(val){
+                    console.log("val")
+                    console.log(val)
+                    console.log("val")
+                    if (val.name=="Login"){
+                        this.isShow = false
+                    }else {
+                        this.isShow = true
+                    }
+                },
+                // 深度观察监听
+                deep: true,
+                immediate:true
+            }
+        }
 
+    }
+</script>
 <style>
+  html,body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  height: 100%;
+  width: 100%;
   color: #2c3e50;
 }
+  .el-header, .el-footer {
+      background-color: #B3C0D1;
+      color: #333;
+      text-align: center;
+      line-height: 60px;
+  }
 
-#nav {
-  padding: 30px;
-}
+  .el-aside {
+      background-color: #D3DCE6;
+      color: #333;
+      text-align: center;
+      line-height: 200px;
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  .el-main {
+      background-color: #E9EEF3;
+      color: #333;
+      text-align: center;
+      line-height: 160px;
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  body > .el-container {
+      margin-bottom: 40px;
+  }
+
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+      line-height: 260px;
+  }
+
+  .el-container:nth-child(7) .el-aside {
+      line-height: 320px;
+  }
+
 </style>
