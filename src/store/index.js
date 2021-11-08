@@ -13,7 +13,7 @@ getRouter().then(res=>{
 export default new Vuex.Store({
   state: {
     qwe:"",
-    login:''
+    login:'out'
   },
   getters:{
     qwe:(state)=>state.qwe,

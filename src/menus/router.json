@@ -16,7 +16,7 @@
       "component": "views/Test.vue"
     },
     {
-      "path": "/",
+      "path": "/home",
       "name": "Home",
       "redirect": "/login",
       "title": "测试",

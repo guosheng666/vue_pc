@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import api from "../api";
+import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -18,13 +19,15 @@ const router = new VueRouter({
 })
 
 let type = null
-router.beforeEach(async (to,from,next)=>{
+router.beforeResolve(async (to,from,next)=>{
+  if(to.name=='Login'||to.path=="/" || to.name==null) next()
   //阻止无线循环
   if(!type ){
-    type = "123"
-    if(type){
-      next("/login")
+    if(store.state.login=='out'){
+      type = null
+      return  next("/login")
     }else {
+      type = "123"
       let routerJson =await api.request.get("/login")
       const routers = JSON.parse(routerJson.data.msg).routers
       routers.map(item=>{
@@ -38,10 +41,10 @@ router.beforeEach(async (to,from,next)=>{
         router.options.routes.push(pageRouter)
         router.addRoute(pageRouter)
       })
+      console.log(routerJson)
       console.log(router.options)
       next({...to, replace: true})
     }
-
   }else {
     next()
   }

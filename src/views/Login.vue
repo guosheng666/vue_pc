@@ -81,7 +81,9 @@
         },
         methods:{
             submitForm(){
-                this.$router.push("/home")
+                this.$store.dispatch("login","in").then(()=>{
+                    this.$router.push("/home")
+                })
             },
             resetForm(formName){
                 this.$refs[formName].resetFields();
