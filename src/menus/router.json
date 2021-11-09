@@ -19,8 +19,28 @@
       "path": "/home",
       "name": "Home",
       "redirect": "/login",
-      "title": "测试",
+      "title": "主页",
       "component": "views/Home.vue"
+    },
+    {
+      "path": "/permissionsAndRouter",
+      "name": "Permissions",
+      "title": "路由及权限管理",
+      "component": "views/routerManagement/Index.vue",
+      "children": [
+        {
+          "path": "/permissionsAndRouter/routerManagement",
+          "name": "AddRouter",
+          "title": "路由管理",
+          "component": "views/routerManagement/RouterManagement.vue"
+        },
+        {
+          "path": "/permissionsAndRouter/permissions",
+          "name": "Permissions",
+          "title": "权限管理",
+          "component": "views/routerManagement/Permissions.vue"
+        }
+      ]
     }
   ]
 }

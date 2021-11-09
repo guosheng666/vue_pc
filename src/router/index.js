@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import api from "../api";
-import store from '../store/index'
+import getMenu from '../units/getMenus'
+import getRouter from "../units/getRouter";
+// import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -23,26 +25,22 @@ router.beforeResolve(async (to,from,next)=>{
   if(to.name=='Login'||to.path=="/" || to.name==null) next()
   //阻止无线循环
   if(!type ){
-    if(store.state.login=='out'){
+    const login = sessionStorage.getItem("login")
+    if(login==null || login=="out"){
       type = null
       return  next("/login")
     }else {
       type = "123"
       let routerJson =await api.request.get("/login")
       const routers = JSON.parse(routerJson.data.msg).routers
+      //设置menus
+      let menus = getMenu(routers)
+      window.sessionStorage.setItem("menus",JSON.stringify(menus))
       routers.map(item=>{
-        const pageRouter = {
-          path: item.path,
-          name: item.name,
-          meta:item.meta,
-          title:item.title,
-          component: () => import(`@/${item.component}`)//用模板字符串解决import 不能直接用变量的问题
-        }
+        const pageRouter = getRouter(item)
         router.options.routes.push(pageRouter)
         router.addRoute(pageRouter)
       })
-      console.log(routerJson)
-      console.log(router.options)
       next({...to, replace: true})
     }
   }else {

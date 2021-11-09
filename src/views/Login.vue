@@ -81,9 +81,8 @@
         },
         methods:{
             submitForm(){
-                this.$store.dispatch("login","in").then(()=>{
-                    this.$router.push("/home")
-                })
+                sessionStorage.setItem("login","in")
+                this.$router.push("/home")
             },
             resetForm(formName){
                 this.$refs[formName].resetFields();

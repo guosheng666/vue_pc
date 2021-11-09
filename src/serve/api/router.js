@@ -9,7 +9,6 @@ router.get('/login',(req,res)=>{
         if (err){
             console.log(err)
         }else {
-            console.log(data)
             res.send({msg:data})
         }
 
