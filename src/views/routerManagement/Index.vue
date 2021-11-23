@@ -1,13 +1,10 @@
 <template>
-   <div> <router-view/></div>
+   <router-view/>
 </template>
 
 <script>
     export default {
         name: "Index",
-        mounted() {
-            console.log(11111111);
-        }
     }
 </script>
 

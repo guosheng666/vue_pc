@@ -3,6 +3,7 @@
     {
       "path": "/about",
       "name": "About",
+      "id": 1,
       "title": "关于",
       "component": "views/About.vue",
       "meta": {
@@ -12,6 +13,7 @@
     {
       "path": "/test",
       "name": "Test",
+      "id": 2,
       "title": "测试",
       "component": "views/Test.vue"
     },
@@ -19,24 +21,28 @@
       "path": "/home",
       "name": "Home",
       "redirect": "/login",
+      "id": 3,
       "title": "主页",
       "component": "views/Home.vue"
     },
     {
       "path": "/permissionsAndRouter",
       "name": "Permissions",
+      "id": 4,
       "title": "路由及权限管理",
       "component": "views/routerManagement/Index.vue",
       "children": [
         {
           "path": "/permissionsAndRouter/routerManagement",
           "name": "AddRouter",
+          "id": "4-1",
           "title": "路由管理",
           "component": "views/routerManagement/RouterManagement.vue"
         },
         {
           "path": "/permissionsAndRouter/permissions",
           "name": "Permissions",
+          "id": "4-2",
           "title": "权限管理",
           "component": "views/routerManagement/Permissions.vue"
         }

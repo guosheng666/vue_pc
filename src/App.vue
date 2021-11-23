@@ -63,8 +63,8 @@
         },
         methods:{
             selectMenus(key) {
-                console.log(key)
-               this.$router.push(key)
+                if (this.$route.path==key) return
+                this.$router.push(key)
             },
         }
     }

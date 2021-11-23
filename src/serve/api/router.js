@@ -16,8 +16,14 @@ router.get('/login',(req,res)=>{
 
 })
 router.get('/getRouters',(req,res)=>{
+    fs.readFile("./src/menus/router.json",'utf8',(err,data)=>{
+        if (err){
+            console.log(err)
+        }else {
+            res.send({msg:data})
+        }
 
-    res.send({msg:'我最帅'})
+    })
 })
 function getRouter(){
     return router
