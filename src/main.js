@@ -5,8 +5,11 @@ import store from './store'
 import element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import request from "./api";
+import *as echarts from "echarts"
 Vue.prototype.axios = request.request
 Vue.prototype.$local = request.request2
+
+Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 Vue.use(element)
 new Vue({

@@ -47,18 +47,19 @@
         watch:{
             $route:{
                 handler(val){
-                    if (val.name=="Login"){
+                    if (val.name=="Login"||val.name=="About"){
                         this.isShow = false
                     }else {
                         this.isShow = true
                     }
+                    this.menus = JSON.parse(window.sessionStorage.getItem("menus"))
                 },
                 // 深度观察监听
                 deep: true,
                 immediate:true
             }
         },
-        created() {
+        mounted() {
            this.menus = JSON.parse(window.sessionStorage.getItem("menus"))
         },
         methods:{
@@ -76,7 +77,7 @@
         margin: 0;
     }
     #app {
-        text-align: center;
+        /*text-align: center;*/
         height: 100%;
         width: 100%;
         color: #2c3e50;
@@ -101,8 +102,8 @@
     .el-main {
         background-color: #E9EEF3;
         color: #333;
-        text-align: center;
-        line-height: 160px;
+        /*text-align: center;*/
+        /*line-height: 160px;*/
     }
 
     body > .el-container {

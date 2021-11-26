@@ -4,7 +4,13 @@
 
 <script>
     export default {
-        name: "Permissions"
+        name: "Permissions",
+        mounted() {
+
+        },
+        methods:{
+
+        }
     }
 </script>
 
